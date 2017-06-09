@@ -6,7 +6,7 @@
     <dimen name="primary_text_padding">16dp</dimen>
     <dimen name="primary_text_top_padding">24dp</dimen>
     <dimen name="primary_text_size">24sp</dimen>
-    
+
     <dimen name="ingredient_text_size">20sp</dimen>
     <dimen name="quantity_measure_text_size">14sp</dimen>
 

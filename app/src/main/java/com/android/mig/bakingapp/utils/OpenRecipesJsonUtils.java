@@ -60,7 +60,8 @@ public class OpenRecipesJsonUtils {
             final String INGREDIENT = "ingredient";
         final String RECIPE_STEPS_ARRAY = "steps";
             final String STEP_ID = "id";
-            final String STEP_DESCRIPTION = "shortDescription";
+            final String STEP_SHORT_DESCRIPTION = "shortDescription";
+            final String STEP_DESCRIPTION = "description";
             final String STEP_VIDEO_URL = "videoURL";
             final String STEP_THUMBNAIL_URL = "thumbnailURL";
         final String RECIPE_SERVINGS = "servings";
@@ -101,10 +102,11 @@ public class OpenRecipesJsonUtils {
                 for (int y = 0; y < stepsJsonArray.length(); y++){
                     JSONObject stepJsonObject = stepsJsonArray.getJSONObject(y);
                     int stepID = stepJsonObject.getInt(STEP_ID);
+                    String shortDescription = stepJsonObject.getString(STEP_SHORT_DESCRIPTION);
                     String description = stepJsonObject.getString(STEP_DESCRIPTION);
                     String videoURL = stepJsonObject.getString(STEP_VIDEO_URL);
                     String thumbnailURL = stepJsonObject.getString(STEP_THUMBNAIL_URL);
-                    mStepObject = new Step(stepID, description, videoURL, thumbnailURL);
+                    mStepObject = new Step(stepID, shortDescription, description, videoURL, thumbnailURL);
                     stepsArrayList.add(mStepObject);
                 }
 
