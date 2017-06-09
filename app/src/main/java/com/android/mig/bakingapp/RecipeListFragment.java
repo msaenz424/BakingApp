@@ -48,7 +48,7 @@ public class RecipeListFragment extends Fragment implements LoaderManager.Loader
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(rootView.getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        mRecipesAdapter = new RecipesAdapter();
+        mRecipesAdapter = new RecipesAdapter(rootView.getContext());
         recyclerView.setAdapter(mRecipesAdapter);
 
         getLoaderManager().initLoader(LOADER_ID, null, this);
