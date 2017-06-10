@@ -62,7 +62,7 @@ public class RecipeListFragment extends Fragment
 
             @Override
             public void OnClickStep(ArrayList<Step> steps) {
-                Intent intent = new Intent(getActivity(), StepsActivity.class);
+                Intent intent = new Intent(getActivity(), StepActivity.class);
                 intent.putExtra(String.valueOf(R.string.action_steps), steps);
                 startActivity(intent);
             }

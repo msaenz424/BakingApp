@@ -27,7 +27,7 @@ public class IngredientListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_ingredien_list, container, false);
+        rootView = inflater.inflate(R.layout.fragment_ingredient_list, container, false);
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.ingredients_recycler_view);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(rootView.getContext(), LinearLayoutManager.VERTICAL, false);
