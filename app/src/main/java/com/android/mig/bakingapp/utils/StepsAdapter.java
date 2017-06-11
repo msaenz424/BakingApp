@@ -13,14 +13,16 @@ import java.util.ArrayList;
 
 public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.StepsAdapterViewHolder>{
 
+    OnClickHandler mOnClickHandler;
     ArrayList<Step> mStepsArray;
 
     public StepsAdapter(){
         mStepsArray = new ArrayList<>();
     }
 
-    public void setStepsAdapter(ArrayList<Step> stepArray){
+    public void setStepsAdapter(ArrayList<Step> stepArray, OnClickHandler onClickHandler){
         mStepsArray = stepArray;
+        mOnClickHandler = onClickHandler;
         notifyDataSetChanged();
     }
 
@@ -44,13 +46,23 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.StepsAdapter
         return 0;
     }
 
-    public class StepsAdapterViewHolder extends RecyclerView.ViewHolder {
+    public class StepsAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView mTextViewStep;
 
         public StepsAdapterViewHolder(View itemView) {
             super(itemView);
             mTextViewStep = (TextView) itemView.findViewById(R.id.text_view_step);
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View view) {
+            mOnClickHandler.OnClick(mStepsArray, getAdapterPosition());
+        }
+    }
+
+    public interface OnClickHandler{
+        void OnClick(ArrayList<Step> stepArrayList, int position);
     }
 }

@@ -26,11 +26,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".StepActivity"
+        <activity
+            android:name=".StepActivity"
             android:label="@string/action_steps"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme">
-
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".StepActivity"/>
+        </activity>
+        <activity
+            android:name=".StepDetailActivity"
+            android:label="@string/action_steps"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".StepDetailActivity"/>
         </activity>
     </application>
 

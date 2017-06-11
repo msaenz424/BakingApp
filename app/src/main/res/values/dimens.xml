@@ -16,6 +16,8 @@
 
     <dimen name="action_padding">8dp</dimen>
     <dimen name="action_horizontal_gap">4dp</dimen>
-    
+
     <dimen name="view_divider_thickness">1dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
 </resources>

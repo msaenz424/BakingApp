@@ -1,5 +1,6 @@
 package com.android.mig.bakingapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -26,7 +27,7 @@ public class StepListFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_recipe_list, container, false);
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recipes_recycler_view);
 
@@ -36,7 +37,15 @@ public class StepListFragment extends Fragment {
         ArrayList<Step> mStepArrayList = getActivity().getIntent().getParcelableArrayListExtra(String.valueOf(R.string.action_steps));
         mStepsAdapter = new StepsAdapter();
         recyclerView.setAdapter(mStepsAdapter);
-        mStepsAdapter.setStepsAdapter(mStepArrayList);
+        mStepsAdapter.setStepsAdapter(mStepArrayList, new StepsAdapter.OnClickHandler() {
+            @Override
+            public void OnClick(ArrayList<Step> stepArrayList, int position) {
+                Intent intent = new Intent(getActivity(), StepDetailActivity.class);
+                intent.putExtra(Intent.EXTRA_TEXT, stepArrayList);
+                intent.putExtra(Intent.EXTRA_UID, position);
+                startActivity(intent);
+            }
+        });
 
         return rootView;
     }
