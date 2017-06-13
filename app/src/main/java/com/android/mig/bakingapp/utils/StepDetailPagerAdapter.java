@@ -28,7 +28,7 @@ public class StepDetailPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return StepDetailFragment.newInstance(mStepArrayList.get(position).getStepDescription());
+        return StepDetailFragment.ViewPagerSubFragment.newInstance(mStepArrayList.get(position).getStepDescription());
     }
 
     @Override
