@@ -1,4 +1,4 @@
-package com.android.mig.bakingapp.utils;
+package com.android.mig.bakingapp.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,9 +8,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.mig.bakingapp.R;
-import com.android.mig.bakingapp.objects.Ingredient;
-import com.android.mig.bakingapp.objects.Recipe;
-import com.android.mig.bakingapp.objects.Step;
+import com.android.mig.bakingapp.models.Ingredient;
+import com.android.mig.bakingapp.models.Recipe;
+import com.android.mig.bakingapp.models.Step;
 
 import java.util.ArrayList;
 

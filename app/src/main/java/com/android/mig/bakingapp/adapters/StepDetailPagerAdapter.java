@@ -1,11 +1,11 @@
-package com.android.mig.bakingapp.utils;
+package com.android.mig.bakingapp.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.android.mig.bakingapp.StepDetailFragment;
-import com.android.mig.bakingapp.objects.Step;
+import com.android.mig.bakingapp.fragments.StepDetailFragment;
+import com.android.mig.bakingapp.models.Step;
 
 import java.util.ArrayList;
 
@@ -28,7 +28,7 @@ public class StepDetailPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return StepDetailFragment.ViewPagerSubFragment.newInstance(mStepArrayList.get(position).getStepDescription());
+        return StepDetailFragment.ViewPagerSubFragment.newInstance(mStepArrayList.get(position), position);
     }
 
     @Override

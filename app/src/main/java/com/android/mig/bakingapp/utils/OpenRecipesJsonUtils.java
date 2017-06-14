@@ -1,8 +1,8 @@
 package com.android.mig.bakingapp.utils;
 
-import com.android.mig.bakingapp.objects.Ingredient;
-import com.android.mig.bakingapp.objects.Recipe;
-import com.android.mig.bakingapp.objects.Step;
+import com.android.mig.bakingapp.models.Ingredient;
+import com.android.mig.bakingapp.models.Recipe;
+import com.android.mig.bakingapp.models.Step;
 
 import org.json.JSONArray;
 import org.json.JSONException;

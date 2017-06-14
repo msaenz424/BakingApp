@@ -1,4 +1,4 @@
-package com.android.mig.bakingapp;
+package com.android.mig.bakingapp.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,8 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.mig.bakingapp.objects.Step;
-import com.android.mig.bakingapp.utils.StepsAdapter;
+import com.android.mig.bakingapp.R;
+import com.android.mig.bakingapp.activities.StepDetailActivity;
+import com.android.mig.bakingapp.models.Step;
+import com.android.mig.bakingapp.adapters.StepsAdapter;
 
 import java.util.ArrayList;
 

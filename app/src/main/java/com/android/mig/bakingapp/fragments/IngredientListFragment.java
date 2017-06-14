@@ -1,4 +1,4 @@
-package com.android.mig.bakingapp;
+package com.android.mig.bakingapp.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,8 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.mig.bakingapp.objects.Ingredient;
-import com.android.mig.bakingapp.utils.IngredientsAdapter;
+import com.android.mig.bakingapp.R;
+import com.android.mig.bakingapp.models.Ingredient;
+import com.android.mig.bakingapp.adapters.IngredientsAdapter;
 
 import java.util.ArrayList;
 

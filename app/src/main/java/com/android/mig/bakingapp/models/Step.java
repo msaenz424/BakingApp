@@ -1,4 +1,4 @@
-package com.android.mig.bakingapp.objects;
+package com.android.mig.bakingapp.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;

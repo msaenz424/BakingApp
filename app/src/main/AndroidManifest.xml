@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,30 +18,30 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".IngredientActivity"
+            android:name=".activities.IngredientActivity"
             android:label="@string/action_ingredients"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".activities.MainActivity" />
         </activity>
         <activity
-            android:name=".StepActivity"
+            android:name=".activities.StepActivity"
             android:label="@string/action_steps"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".StepActivity"/>
+                android:value=".activities.StepActivity"/>
         </activity>
         <activity
-            android:name=".StepDetailActivity"
+            android:name=".activities.StepDetailActivity"
             android:label="@string/action_steps"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".StepDetailActivity"/>
+                android:value=".activities.StepDetailActivity"/>
         </activity>
     </application>
 

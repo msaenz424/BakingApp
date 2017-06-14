@@ -1,4 +1,4 @@
-package com.android.mig.bakingapp;
+package com.android.mig.bakingapp.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,10 +13,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.mig.bakingapp.objects.Ingredient;
-import com.android.mig.bakingapp.objects.Recipe;
-import com.android.mig.bakingapp.objects.Step;
-import com.android.mig.bakingapp.utils.RecipesAdapter;
+import com.android.mig.bakingapp.R;
+import com.android.mig.bakingapp.activities.IngredientActivity;
+import com.android.mig.bakingapp.activities.StepActivity;
+import com.android.mig.bakingapp.models.Ingredient;
+import com.android.mig.bakingapp.models.Recipe;
+import com.android.mig.bakingapp.models.Step;
+import com.android.mig.bakingapp.adapters.RecipesAdapter;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
