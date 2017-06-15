@@ -1,12 +1,14 @@
 package com.android.mig.bakingapp.fragments;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -50,10 +52,35 @@ public class RecipeListFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_recipe_list, container, false);
-        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recipes_recycler_view);
+        RecyclerView recipesRecyclerView = (RecyclerView) rootView.findViewById(R.id.recipes_recycler_view);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(rootView.getContext(), LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(linearLayoutManager);
+        // sets the number of columns in recipe list according to the screen configuration
+        int orientation = getResources().getConfiguration().orientation;
+        int smallestWidth = getResources().getConfiguration().smallestScreenWidthDp;
+        // if it's a handset
+        if (smallestWidth < getResources().getInteger(R.integer.sw600dp)){
+            if (orientation == Configuration.ORIENTATION_PORTRAIT){
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(rootView.getContext(), LinearLayoutManager.VERTICAL, false);
+                recipesRecyclerView.setLayoutManager(linearLayoutManager);
+            } else {
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(
+                        rootView.getContext(),
+                        getResources().getInteger(R.integer.landscape_handset_recipes_list_num_columns),
+                        LinearLayoutManager.VERTICAL,
+                        false);
+                recipesRecyclerView.setLayoutManager(gridLayoutManager);
+            }
+        // if it's a tablet
+        } else {
+            int numColumns;
+            if (orientation == Configuration.ORIENTATION_PORTRAIT){
+                numColumns = getResources().getInteger(R.integer.portrait_tablet_recipes_list_num_columns);
+            } else {
+                numColumns = getResources().getInteger(R.integer.landscape_tablet_recipes_list_num_columns);
+            }
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(rootView.getContext(), numColumns, LinearLayoutManager.VERTICAL, false);
+            recipesRecyclerView.setLayoutManager(gridLayoutManager);
+        }
 
         mRecipesAdapter = new RecipesAdapter(new RecipesAdapter.OnClickHandler() {
             @Override
@@ -70,7 +97,7 @@ public class RecipeListFragment extends Fragment
                 startActivity(intent);
             }
         });
-        recyclerView.setAdapter(mRecipesAdapter);
+        recipesRecyclerView.setAdapter(mRecipesAdapter);
 
         getLoaderManager().initLoader(LOADER_ID, null, this);
 
