@@ -33,7 +33,10 @@ public class StepDetailPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return mStepArrayList.size();
+        if (mStepArrayList != null) {
+            return mStepArrayList.size();
+        }
+        return 0;
     }
 
     @Override

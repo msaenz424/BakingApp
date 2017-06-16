@@ -36,6 +36,7 @@ public class RecipeListFragment extends Fragment
     private static final int LOADER_ID = 900;
     final private String RECIPES_ADDRESS = "https://d17h27t6h515a5.cloudfront.net/topher/2017/May/59121517_baking/baking.json";
     private URL recipeURL = null;
+    public boolean isTablet;                // used to help distinguish between tablet and handset
 
     RecipesAdapter mRecipesAdapter;
     View rootView;
@@ -59,6 +60,7 @@ public class RecipeListFragment extends Fragment
         int smallestWidth = getResources().getConfiguration().smallestScreenWidthDp;
         // if it's a handset
         if (smallestWidth < getResources().getInteger(R.integer.sw600dp)){
+            isTablet = false;
             if (orientation == Configuration.ORIENTATION_PORTRAIT){
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(rootView.getContext(), LinearLayoutManager.VERTICAL, false);
                 recipesRecyclerView.setLayoutManager(linearLayoutManager);
@@ -72,6 +74,7 @@ public class RecipeListFragment extends Fragment
             }
         // if it's a tablet
         } else {
+            isTablet = true;
             int numColumns;
             if (orientation == Configuration.ORIENTATION_PORTRAIT){
                 numColumns = getResources().getInteger(R.integer.portrait_tablet_recipes_list_num_columns);
@@ -94,6 +97,7 @@ public class RecipeListFragment extends Fragment
             public void OnClickStep(ArrayList<Step> steps) {
                 Intent intent = new Intent(getActivity(), StepActivity.class);
                 intent.putExtra(String.valueOf(R.string.action_steps), steps);
+                intent.putExtra(Intent.ACTION_CONFIGURATION_CHANGED, isTablet);
                 startActivity(intent);
             }
         });

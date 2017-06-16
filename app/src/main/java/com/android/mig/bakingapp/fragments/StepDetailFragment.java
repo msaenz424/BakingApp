@@ -34,9 +34,11 @@ import java.util.ArrayList;
 public class StepDetailFragment extends Fragment {
 
     private static final int STARTING_POSITION = 0;
+    private boolean isTabletFlag = false;                 // true if device is a tablet, false if it's a handset
     public ViewPager mViewPager;
     private static int mCurrentViewPagerPosition;
     View rootView;
+    ArrayList<Step> mStepArrayList;
 
     public StepDetailFragment(){
 
@@ -47,9 +49,11 @@ public class StepDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_step_detail, container, false);
 
-        // retrieves the array of steps that was passed from StepListFragment
-        ArrayList<Step> mStepArrayList = getActivity().getIntent().getParcelableArrayListExtra(Intent.EXTRA_TEXT);
-        mCurrentViewPagerPosition = getActivity().getIntent().getIntExtra(Intent.EXTRA_UID, STARTING_POSITION);
+        if (!isTabletFlag){
+            // retrieves the array of steps that was passed from StepListFragment
+            mStepArrayList = getActivity().getIntent().getParcelableArrayListExtra(Intent.EXTRA_TEXT);
+            mCurrentViewPagerPosition = getActivity().getIntent().getIntExtra(Intent.EXTRA_UID, STARTING_POSITION);
+        }
 
         // Create the adapter that will return a fragment for each step
         StepDetailPagerAdapter mStepDetailPagerAdapter = new StepDetailPagerAdapter(getChildFragmentManager());
@@ -61,6 +65,28 @@ public class StepDetailFragment extends Fragment {
         mViewPager.setCurrentItem(mCurrentViewPagerPosition);
 
         return rootView;
+    }
+
+    /**
+     * Updates key data in this fragment
+     *
+     * @param steps array of step objects
+     * @param position position of view pager to be displayed
+     * @param isTablet flag that helps distinguish between tablet and handset
+     */
+    public void setStepsData(ArrayList<Step> steps, int position, boolean isTablet){
+        mStepArrayList = steps;
+        mCurrentViewPagerPosition = position;
+        isTabletFlag = isTablet;
+    }
+
+    /**
+     * Displays the corresponding position of view pager
+     *
+     * @param position the desired position to be displayed
+     */
+    public void changeViewPagerPosition(int position){
+        mViewPager.setCurrentItem(position);
     }
 
     /**
