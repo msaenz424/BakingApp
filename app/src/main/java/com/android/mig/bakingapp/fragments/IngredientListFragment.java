@@ -1,5 +1,6 @@
 package com.android.mig.bakingapp.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import com.android.mig.bakingapp.R;
 import com.android.mig.bakingapp.models.Ingredient;
 import com.android.mig.bakingapp.adapters.IngredientsAdapter;
+import com.android.mig.bakingapp.utils.Preferences;
 
 import java.util.ArrayList;
 
@@ -34,10 +36,14 @@ public class IngredientListFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(rootView.getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
+        String recipe = getActivity().getIntent().getStringExtra(Intent.EXTRA_TEXT);
         ArrayList<Ingredient> mIngredientArrayList = getActivity().getIntent().getParcelableArrayListExtra(String.valueOf(R.string.action_ingredients));
         mIngredientsAdapter = new IngredientsAdapter();
         recyclerView.setAdapter(mIngredientsAdapter);
         mIngredientsAdapter.setIngredientAdapter(mIngredientArrayList);
+
+        Preferences.deleteAllPreferences(getActivity());
+        Preferences.saveIngredientList(getActivity(), recipe, mIngredientArrayList);
 
         return rootView;
     }

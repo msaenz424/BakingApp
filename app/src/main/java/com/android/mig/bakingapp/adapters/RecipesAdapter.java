@@ -66,7 +66,7 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipesA
         @Override
         public void onClick(View view) {
             if (view.getId() == mButtonIngredient.getId())
-                mOnClickHandler.OnClickIngredient(mRecipeArray.get(getAdapterPosition()).getRecipeIngredient());
+                mOnClickHandler.OnClickIngredient(mRecipeArray.get(getAdapterPosition()).getRecipeName(), mRecipeArray.get(getAdapterPosition()).getRecipeIngredient());
             else if (view.getId() == mButtonStep.getId()){
                 mOnClickHandler.OnClickStep(mRecipeArray.get(getAdapterPosition()).getRecipeStep());
             }
@@ -74,7 +74,7 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipesA
     }
 
     public interface OnClickHandler{
-        void OnClickIngredient(ArrayList<Ingredient> ingredients);
+        void OnClickIngredient(String recipe, ArrayList<Ingredient> ingredients);
         void OnClickStep(ArrayList<Step> steps);
     }
 

@@ -87,9 +87,10 @@ public class RecipeListFragment extends Fragment
 
         mRecipesAdapter = new RecipesAdapter(new RecipesAdapter.OnClickHandler() {
             @Override
-            public void OnClickIngredient(ArrayList<Ingredient> ingredients) {
+            public void OnClickIngredient(String recipe, ArrayList<Ingredient> ingredients) {
                 Intent intent = new Intent(getActivity(), IngredientActivity.class);
                 intent.putExtra(String.valueOf(R.string.action_ingredients), ingredients);
+                intent.putExtra(Intent.EXTRA_TEXT, recipe);
                 startActivity(intent);
             }
 
