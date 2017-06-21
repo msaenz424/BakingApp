@@ -16,7 +16,8 @@ import org.junit.runner.RunWith;
 @RunWith(AndroidJUnit4.class)
 public class MainActivityScreenTest {
 
-    public static final String INGREDIENT_TEXT = "unsalted butter, melted";
+    public static final String INGREDIENT_TEXT_SAMPLE = "unsalted butter, melted";
+    private static final String STEP_TEXT_SAMPLE = "Prep the cookie crust.";
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
@@ -24,11 +25,22 @@ public class MainActivityScreenTest {
     @Test
     public void clickRecyclerViewIngredientsButton_OpensIngredientActivity(){
         // clicks on button "Ingredients" within the RecyclerView item at position 0
-        onView(withId(R.id.recipe_list_fragment)).perform(
-                RecyclerViewActions.actionOnItemAtPosition(0, MyViewAction.clickChildViewWithId(R.id.button_ingredients)));
+        onView(withId(R.id.recipe_list_fragment))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(0, MyViewAction.clickChildViewWithId(R.id.button_ingredients)));
 
-        // checks if INGREDIENT_TEXT is found in RecyclerView at position 1
+        // checks if INGREDIENT_TEXT is found in RecyclerView(IngredientActivity) at position 1
         onView(withId(R.id.ingredient_list_fragment))
-                .check(matches(MyRecyclerViewMatcher.atPositionOnView(1, withText(INGREDIENT_TEXT), R.id.text_view_ingredient)));
+                .check(matches(MyRecyclerViewMatcher.atPositionOnView(1, withText(INGREDIENT_TEXT_SAMPLE), R.id.text_view_ingredient)));
+    }
+
+    @Test
+    public void clickRecyclerViewStepsButton_OpensStepActivity(){
+        // clicks on button "Steps" within the RecyclerView item at position 0 
+        onView(withId(R.id.recipe_list_fragment))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(0, MyViewAction.clickChildViewWithId(R.id.button_steps)));
+
+        //checks if STEP_TEXT_SAMPLE is found in RecyclerView(StepActivity) at position 2
+        onView(withId(R.id.step_list_fragment))
+                .check(matches(MyRecyclerViewMatcher.atPositionOnView(2, withText(STEP_TEXT_SAMPLE), R.id.text_view_step)));
     }
 }
