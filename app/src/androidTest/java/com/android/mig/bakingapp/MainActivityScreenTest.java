@@ -43,4 +43,10 @@ public class MainActivityScreenTest {
         onView(withId(R.id.step_list_fragment))
                 .check(matches(MyRecyclerViewMatcher.atPositionOnView(2, withText(STEP_TEXT_SAMPLE), R.id.text_view_step)));
     }
+
+    @Test
+    public void recipeListHasNumberOfItems() {
+        // checks if list of recipes contains 4 items
+        onView(withId(R.id.recipe_list_fragment)).check(matches(MyRecyclerViewMatcher.hasNumberOfItems(4)));
+    }
 }
