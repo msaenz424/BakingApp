@@ -37,6 +37,7 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.StepsAdapter
     @Override
     public void onBindViewHolder(StepsAdapterViewHolder holder, int position) {
         holder.mTextViewStep.setText(mStepsArray.get(position).getStepShortDescription());
+        holder.mTextViewStep.setBackgroundResource(position % 2 == 0 ? R.color.green100 : R.color.green50);
     }
 
     @Override

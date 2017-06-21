@@ -39,6 +39,8 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
 
         holder.mTextViewIngredient.setText(ingredient);
         holder.mTextViewQuantityMeasure.setText(String.valueOf(qty) + " " + measure);
+        holder.mTextViewIngredient.setBackgroundResource(position % 2 == 0 ? R.color.green100 : R.color.green50);
+        holder.mTextViewQuantityMeasure.setBackgroundResource(position % 2 == 0 ? R.color.green100 : R.color.green50);
     }
 
     @Override

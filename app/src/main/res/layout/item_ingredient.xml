@@ -9,25 +9,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/ingredient_text_size"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"/>
+        android:paddingLeft="@dimen/recycler_view_horizontal_padding"
+        android:paddingRight="@dimen/recycler_view_horizontal_padding"
+        android:paddingTop="@dimen/recycler_view_vertical_padding"/>
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/text_view_quantity_measure"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/text_view_quantity_measure"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/quantity_measure_text_size"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"/>
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/view_divider_thickness"
-        android:background="@android:color/darker_gray"/>
+        android:textSize="@dimen/quantity_measure_text_size"
+        android:paddingLeft="@dimen/recycler_view_horizontal_padding"
+        android:paddingRight="@dimen/recycler_view_horizontal_padding"
+        android:paddingBottom="@dimen/recycler_view_vertical_padding" />
 
 </LinearLayout>
