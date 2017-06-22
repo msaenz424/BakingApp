@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipesAdapterViewHolder>{
 
+    private static final String SERVINGS_LABEL = "Servings: ";
     ArrayList<Recipe> mRecipeArray;
     final private OnClickHandler mOnClickHandler;
 
@@ -40,7 +41,9 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipesA
     @Override
     public void onBindViewHolder(RecipesAdapterViewHolder holder, int position) {
         String recipeName = mRecipeArray.get(position).getRecipeName();
+        int servings = mRecipeArray.get(position).getRecipeServings();
         holder.mTextViewRecipe.setText(recipeName);
+        holder.mTextViewServings.setText(SERVINGS_LABEL + String.valueOf(servings));
     }
 
     @Override
@@ -51,12 +54,14 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipesA
     public class RecipesAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView mTextViewRecipe;
+        TextView mTextViewServings;
         Button mButtonIngredient;
         Button mButtonStep;
 
         public RecipesAdapterViewHolder(View itemView) {
             super(itemView);
             mTextViewRecipe = (TextView)itemView.findViewById(R.id.text_view_recipe_item);
+            mTextViewServings = (TextView)itemView.findViewById(R.id.text_view_servings);
             mButtonIngredient = (Button) itemView.findViewById(R.id.button_ingredients);
             mButtonIngredient.setOnClickListener(this);
             mButtonStep = (Button) itemView.findViewById(R.id.button_steps);
