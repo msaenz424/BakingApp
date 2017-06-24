@@ -119,7 +119,7 @@ public class StepDetailFragment extends Fragment {
 
             // this tries to set the player with a video, but if there isn't, uses an image
             if ("".equals(videoURL) || videoURL == null) {
-                mSimpleExoPlayerView.setVisibility(View.INVISIBLE);
+                mSimpleExoPlayerView.setVisibility(View.GONE);
                 ImageView thumbnailImageView = (ImageView) subView.findViewById(R.id.thumbnail_step_detail_image_view);
                 thumbnailImageView.setVisibility(View.VISIBLE);
                 if ("".equals(thumbnailURL) || thumbnailURL == null) {
