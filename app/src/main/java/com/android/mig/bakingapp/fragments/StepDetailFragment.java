@@ -1,6 +1,7 @@
 package com.android.mig.bakingapp.fragments;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -100,6 +102,7 @@ public class StepDetailFragment extends Fragment {
         private static final String ARG_STEP_NUMBER = "step_number";
         private SimpleExoPlayer mSimpleExoPlayer;
         private SimpleExoPlayerView mSimpleExoPlayerView;
+        TextView mDescriptionTextView;
 
         @Nullable
         @Override
@@ -109,12 +112,12 @@ public class StepDetailFragment extends Fragment {
             String thumbnailURL = getArguments().getString(ARG_STEP_THUMBNAIL_URL);
             int stepNumber = getArguments().getInt(ARG_STEP_NUMBER);
 
-            TextView textView = (TextView) subView.findViewById(R.id.text_view_step_description);
-            textView.setText(getArguments().getString(ARG_STEP_DESCRIPTION));
+            mDescriptionTextView = (TextView) subView.findViewById(R.id.text_view_step_description);
+            mDescriptionTextView.setText(getArguments().getString(ARG_STEP_DESCRIPTION));
 
             mSimpleExoPlayerView = (SimpleExoPlayerView) subView.findViewById(R.id.video_step_detail_exoplayer_view);
 
-            // this tries to set the player with a video, but there isn't uses an image
+            // this tries to set the player with a video, but if there isn't, uses an image
             if ("".equals(videoURL) || videoURL == null) {
                 mSimpleExoPlayerView.setVisibility(View.INVISIBLE);
                 ImageView thumbnailImageView = (ImageView) subView.findViewById(R.id.thumbnail_step_detail_image_view);
@@ -129,6 +132,43 @@ public class StepDetailFragment extends Fragment {
             }
 
             return subView;
+        }
+
+        @Override
+        public void onConfigurationChanged(Configuration newConfig) {
+            super.onConfigurationChanged(newConfig);
+            if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                //hideSystemUI();
+                mDescriptionTextView.setVisibility(View.GONE);
+            } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+                //showSystemUI();   // layouts not showing properly after using hideSystemUI
+                mDescriptionTextView.setVisibility(View.VISIBLE);
+            }
+        }
+
+        // This snippet hides the system bars.
+        private void hideSystemUI() {
+            // Set the IMMERSIVE flag.
+            // Set the content to appear under the system bars so that the content
+            // doesn't resize when the system bars hide and show.
+            final View decorView = getActivity().getWindow().getDecorView();
+            decorView.setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+                            | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        }
+
+        // This snippet shows the system bars. It does this by removing all the flags
+        // except for the ones that make the content appear under the system bars.
+        private void showSystemUI() {
+            final View decorView = getActivity().getWindow().getDecorView();
+            decorView.setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
 
         /**

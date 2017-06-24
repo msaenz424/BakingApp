@@ -37,6 +37,7 @@
         </activity>
         <activity
             android:name=".activities.StepDetailActivity"
+            android:configChanges="orientation|screenSize"
             android:label="@string/action_steps"
             android:theme="@style/AppTheme">
             <meta-data
