@@ -131,12 +131,18 @@ public class StepDetailFragment extends Fragment {
                 initializePlayer(Uri.parse(videoURL), stepNumber);
             }
 
+            onRotationAction(getResources().getConfiguration());
+
             return subView;
         }
 
         @Override
         public void onConfigurationChanged(Configuration newConfig) {
             super.onConfigurationChanged(newConfig);
+            onRotationAction(newConfig);
+        }
+
+        private void onRotationAction(Configuration newConfig){
             if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 //hideSystemUI();
                 mDescriptionTextView.setVisibility(View.GONE);
