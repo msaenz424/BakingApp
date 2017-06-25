@@ -71,7 +71,8 @@
                 android:padding="@dimen/action_padding"
                 android:text="@string/action_ingredients"
                 android:textColor="@color/colorAccent"
-                android:background="@android:color/transparent" />
+                android:background="@android:color/transparent"
+                android:foreground="?android:attr/selectableItemBackground"/>
 
             <Button
                 android:id="@+id/button_steps"
@@ -80,7 +81,8 @@
                 android:padding="@dimen/action_padding"
                 android:text="@string/action_steps"
                 android:textColor="@color/colorAccent"
-                android:background="@android:color/transparent"/>
+                android:background="@android:color/transparent"
+                android:foreground="?android:attr/selectableItemBackground"/>
 
         </LinearLayout>
 

@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linear_layout_step"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground">
 
     <TextView
         android:id="@+id/text_view_step"
@@ -12,7 +16,7 @@
         android:paddingTop="@dimen/recycler_view_vertical_padding"
         android:paddingBottom="@dimen/recycler_view_vertical_padding"
         android:paddingLeft="@dimen/recycler_view_horizontal_padding"
-        android:paddingRight="@dimen/recycler_view_horizontal_padding" >
+        android:paddingRight="@dimen/recycler_view_horizontal_padding">
 
     </TextView>
 
