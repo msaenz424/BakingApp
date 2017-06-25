@@ -36,7 +36,7 @@ import java.util.ArrayList;
 public class StepDetailFragment extends Fragment {
 
     private static final int STARTING_POSITION = 0;
-    private boolean isTabletFlag = false;                 // true if device is a tablet, false if it's a handset
+    private static boolean isTabletFlag = false;                 // true if device is a tablet, false if it's a handset
     public ViewPager mViewPager;
     private static int mCurrentViewPagerPosition;
     View rootView;
@@ -131,7 +131,9 @@ public class StepDetailFragment extends Fragment {
                 initializePlayer(Uri.parse(videoURL), stepNumber);
             }
 
-            onRotationAction(getResources().getConfiguration());
+            if (!isTabletFlag){
+                onRotationAction(getResources().getConfiguration());
+            }
 
             return subView;
         }
